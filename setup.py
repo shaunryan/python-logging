@@ -12,7 +12,7 @@ README = (HERE / "README.md").read_text()
 
 # This call to setup() does all the work
 setup(
-    name="[loggingdemo]",
+    name="loggingdemo",
     version_config={
         "template": "{tag}",
         "dev_template": "{tag}.dev{ccount}",

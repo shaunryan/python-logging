@@ -1,0 +1,13 @@
+{
+    "databricks.workspaceConfiguration": {
+        "workspaceGuid": "da3b8611-11e9-2120-555b-64e81a92bfe5",
+        "lastActiveConnection": "Default"
+    },
+    "python.pythonPath": "/Users/shaunryan/AzureDevOps/mycelium/venv/bin/python3.7",
+    "python.testing.pytestArgs": [
+        "test"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true
+}
