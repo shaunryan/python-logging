@@ -10,9 +10,9 @@ class SqlServerHandler(logging.Handler):
         SqlServerHandler class constructor
         Parameters:
             self: instance of the class
-            database: database
-            table: log table name
-            attributes_list: log table columns
+            connection_string: pyodbc connection string to connect to db
+            sql: parameterised sql statement
+            log_record_delimiter: delimiter to split the formatted message into sql parameter values default=,
         Returns:
             None
         """
