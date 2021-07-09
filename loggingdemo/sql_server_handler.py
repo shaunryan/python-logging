@@ -34,7 +34,7 @@ class SqlServerHandler(logging.Handler):
         """
 
         # Use configured formatter, sql is all driven of the config.
-        values = [s.strip() 
+        values = [s.strip().replace(".<module>", "") 
             for s in self.format(record).split(self._log_record_delimiter)]
 
         conn = pyodbc.connect(self._connection_string)

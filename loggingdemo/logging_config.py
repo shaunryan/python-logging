@@ -4,7 +4,15 @@ import yaml
 import os
 
 
-def get_logger(name:str)->logging:
+def get_logger(name:str)->logging.Logger:
+    """
+            get_logger function
+            Parameters:
+                name: the name of the logger to get. If it's not defined in config it will be the root
+                      use a name that allows the identification of the application that's logging.
+            Returns:
+                A logger with a specific name based on the configuration
+    """
 
     directoryPath = os.getenv("LOGGINGDEMOHOME", "./")
 

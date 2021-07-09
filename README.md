@@ -39,6 +39,7 @@ Ensure SQL Server is available with the following table:
 create table [ops].[application_log]
 (
     [id] int IDENTITY(1,1) NOT NULL,
+    [name] varchar(100) NOT NULL,
     [created_at] datetime NOT NULL,
     [module_function] varchar(500) NOT NULL,
     [level] varchar(500) NOT NULL,
