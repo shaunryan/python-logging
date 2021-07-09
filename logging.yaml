@@ -1,19 +1,49 @@
-
 version: 1
 formatters:
+  # https://docs.python.org/3/library/logging.html#logrecord-attributes
   default: 
     format: "%(asctime)s : %(name)s.%(funcName)s : %(levelname)s : %(message)s"
+    
+  sql_server:
+    # requires this table as configured in this configuration
+    # create table [ops].[application_log]
+    # (
+    #     [id] int IDENTITY(1,1) NOT NULL,
+    #     [created_at] datetime NOT NULL,
+    #     [module_function] varchar(500) NOT NULL,
+    #     [level] varchar(500) NOT NULL,
+    #     [message] varchar(500) NOT NULL,
+    #     CONSTRAINT pk_ops_application_log_id PRIMARY KEY CLUSTERED (id)
+    # )
+    datefmt: "%Y-%m-%d %H:%M:%S"
+    format: "
+      insert into {{table}}(created_at, module_function, level, message)
+      values(convert(datetime, '%(asctime)s.%(msecs)03d', 120), '%(name)s.%(funcName)s', '%(levelname)s', '%(message)s')
+      "
+
 handlers:
+
   console:
+
     class: logging.StreamHandler
     level: DEBUG
     formatter: default
     stream: ext://sys.stdout
-loggers:
-  defaullogger:
+
+  sql_server:
+
+    class: loggingdemo.sql_server_handler.SqlServerHandler
     level: DEBUG
-    handlers: [console]
-    propogate: no
+    formatter: sql_server
+    table: ops.application_log
+    connection_string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=dataplatform-sql.database.windows.net;DATABASE=deng_ctrl_db;UID=application_logging;PWD=thisaintit:)
+
+# loggers:
+#   defaultlogger:
+#     level: DEBUG
+#     handlers: [console]
+#     propogate: no
+
 root:
   level: DEBUG
-  handlers: [console]
+  handlers: [sql_server, console]
