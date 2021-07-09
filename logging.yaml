@@ -47,5 +47,5 @@ handlers:
 
 root:
   level: DEBUG
-  handlers: [sql_server]
-  # handlers: [sql_server, console]
+  # log to the console and sql server
+  handlers: [sql_server, console]
