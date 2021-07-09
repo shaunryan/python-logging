@@ -14,7 +14,6 @@ Currently configured against an Azure SQL DB, though the connection string can b
 
 Tech debt to sort out.
 - password redaction
-- pass log values as parameters to prevent nasty sql injectors
 
 
 ## Install
