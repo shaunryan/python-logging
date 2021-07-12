@@ -39,7 +39,7 @@ handlers:
     sql: "INSERT INTO ops.application_log(created_at, name, module_function, level, message)
           VALUES (?,?,?,?,?)"
 
-    connection_string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=dataplatform-sql.database.windows.net;DATABASE=deng_ctrl_db;UID=application_logging;PWD=SuperSecret!
+    connection_string: DRIVER={ODBC Driver 17 for SQL Server};SERVER=dataplatform-sql.database.windows.net;DATABASE=deng_ctrl_db;UID=application_logging;PWD=blahblahblah
 
 root:
   level: DEBUG
